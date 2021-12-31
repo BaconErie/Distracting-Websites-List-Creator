@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Distracting Websites List Creator</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id="chooseBlocker">
+        <h1>Step 1: Choose a blocker</h1>
+        <button id="coldTurkey" class="blockerButton">Cold Turkey</button>
+        <button id="stayFocusd" class="blockerButton">stayFocusd</button>
+        <button id="leechBlock" class="blockerButton">LeechBlock NG</button>
+        <button id="distractMeNot" class="blockerButton">Distract Me Not</button>
+    </div>
 
+    <div id="chooseOptions" class="hide">
+        <h1>Step 2: Select what sites you want</h1>
+        <form id="chooseOptionsForm">
+            <input type="checkbox" id="games">
+            <label for="games">Game websites</label><br>
+
+            <input type="checkbox" id="entertainment">
+            <label for="entertainment">Entertainment websites</label><br>
+
+            <input type="checkbox" id="social">
+            <label for="social">Social websites</label><br>
+
+            <input type="submit" value="Next">
+        </form>
+    </div>
+
+    <div id="generatingList" class="hide">
+        <h1>Generating your list...</h1>
+        <p>Please wait...</p>
+        <p>hype hype hype hype hype</p>
+    </div>
+
+    <div id="finish" class="hide">
+        <h1>Step 3: Done!</h1>
+        <p>Your custom-tailored distracting-websites-list has been created!</p>
+        <button id="copyList">Click here to copy the list to the clipboard</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
