@@ -2,6 +2,8 @@ let chooseBlocker = document.getElementById("chooseBlocker");
 let chooseOptions = document.getElementById("chooseOptions");
 let generatingList = document.getElementById("generatingList");
 let finish = document.getElementById("finish");
+let downloadList = document.getElementById("download");
+let noDownloadList = document.getElementById("noDownload");
 
 let chooseOptionsForm = document.getElementById("chooseOptionsForm");
 let gamesOption = document.getElementById("games");
@@ -9,6 +11,7 @@ let entertainmentOption = document.getElementById("entertainment");
 let socialOption = document.getElementById("social");
 
 let copyListButton = document.getElementById("copyList");
+let downloadListButton = document.getElementById("downloadList");
 
 let blocker;
 let options = [];
@@ -19,25 +22,29 @@ const BLOCKER_PARAMETERS = {
     "coldTurkey": {
         "entrySeperator": "\n",
         "accept": ["wildcard", "domains", "url"],
-        "httpAddition": false
+        "httpAddition": false,
+        "download": true
     },
 
     "leechBlock": {
         "entrySeperator": "\n",
         "accept": ["wildcard", "domains", "url"],
-        "httpAddition": false
+        "httpAddition": false,
+        "download": false
     },
 
     "stayFocusd": {
         "entrySeperator": "\n",
         "accept": ["wildcard", "domains", "url"],
-        "httpAddition": false
+        "httpAddition": false,
+        "download": false
     },
 
     "distractMeNot": {
         "entrySeperator": "\n",
         "accept": ["wildcard", "domains", "url"],
-        "httpAddition": true
+        "httpAddition": true,
+        "download": false
     }
 };
 
@@ -54,23 +61,33 @@ function blockerChosen(event){
 }
 
 function optionsChosen(event){
+    event.preventDefault();
+    
+    checkedOption = false;
+
     if(gamesOption.checked){
         options.push("games");
+        checkedOption = true;
     }
     if(entertainmentOption.checked){
         options.push("entertainment");
+        checkedOption = true;
     }
     if(socialOption.checked){
         options.push("social");
+        checkedOption = true;
+    }
+
+    if(!checkedOption){
+        alert("You haven't checked any option!");
+        return;
     }
 
     //Go to next step
     chooseOptions.style.display = "none";
-    generatingList.style.display = "block";
+    generatingList.style.display = "flex";
     
     generateList();
-
-    event.preventDefault();
 }
 
 async function copyList(){
@@ -79,6 +96,10 @@ async function copyList(){
     }
 
     await navigator.clipboard.writeText(finalList);
+}
+
+function downloadListHandler(){
+    download("myList.txt", finalList)
 }
 
 /*--------------
@@ -114,7 +135,15 @@ async function generateList(){
     listGenerated = true;
 
     generatingList.style.display = "none";
-    finish.style.display = "block";
+    finish.style.display = "flex";
+
+    if(BLOCKER_PARAMETERS[blocker]["download"]){
+        //Allow downloads
+        downloadList.style.display = "block";
+    }else{
+        //Do not allow downloads, only copying
+        noDownloadList.style.display = "block";
+    }
 }
 
 async function getBlockerAcceptedLists(category, blocker){
@@ -158,12 +187,28 @@ async function getList(category, type){
     return text.split(/\r\n|\r|\n/g)
 }
 
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+
 /*-----------------------
 EVENT HANDLER CONNECTIONS
 -----------------------*/
 
 chooseOptionsForm.addEventListener("submit", optionsChosen);
-copyListButton.addEventListener("click", copyList)
+copyListButton.addEventListener("click", copyList);
+downloadListButton.addEventListener("click", downloadListHandler);
+
 
 //Add handlers to every blocker button
 //This is run when page is loaded
@@ -175,4 +220,3 @@ const blockerButtons = document.getElementsByClassName("blockerButton");
 for(let i = 0; i < blockerButtons.length; i++){
     blockerButtons[i].addEventListener("click", blockerChosen);
 }
-

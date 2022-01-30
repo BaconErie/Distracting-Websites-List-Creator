@@ -1,3 +1,130 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Karla';
+    color: #ffffff;
+    background-color: #505050;
+}
+
+h1 {
+    font-size: 10vh;
+    text-align: center;
+    font-family: 'Rubik';
+    color: #ffffff;
+}
+
+button {
+    font-size: 4vh;
+    font-family: 'Karla';
+    background-color: #fe8062;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 1vmin;
+    box-sizing: border-box;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+button:hover {
+    font-size: 4vh;
+    font-family: 'Karla';
+    background-color: #ff7653;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 1vmin;
+    box-sizing: border-box;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+button:active {
+    font-size: 4vh;
+    font-family: 'Karla';
+    background-color: #ffebe6;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 1vmin;
+    box-sizing: border-box;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+label {
+    font-size: 4vh;
+    font-family: 'Karla';
+    color: #ffffff;
+}
+
+p {
+    font-size: 4vh;
+    font-family: 'Karla';
+}
+
+body > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+[type=submit] {
+    font-size: 4vh;
+    font-family: 'Karla';
+    background-color: #fe8062;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 1vmin;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+[type=submit]:hover {
+    font-size: 4vh;
+    font-family: 'Karla';
+    background-color: #ff7653;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 1vmin;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+[type=submit]:active {
+    font-size: 4vh;
+    font-family: 'Karla';
+    background-color: #ffebe6;
+    color: #ffffff;
+    border: 0px;
+    border-radius: 1vmin;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
 .hide {
     display: none;
+}
+
+#blockerWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100vmin;
+    justify-content: space-between;
+    height: 60vh;
+}
+
+#blockerWrapper > button {
+    height: 10vh;
 }

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <link rel="icon" type="image/x-icon" href="favicon.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Distracting Websites List Creator</title>
     <link href="style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&family=Karla"/>
   </head>
   <body>
     <div id="chooseBlocker">
         <h1>Step 1: Choose a blocker</h1>
-        <button id="coldTurkey" class="blockerButton">Cold Turkey</button>
-        <button id="stayFocusd" class="blockerButton">stayFocusd</button>
-        <button id="leechBlock" class="blockerButton">LeechBlock NG</button>
-        <button id="distractMeNot" class="blockerButton">Distract Me Not</button>
+
+        <div id="blockerWrapper">
+            <button id="coldTurkey" class="blockerButton">Cold Turkey</button>
+            <button id="stayFocusd" class="blockerButton">stayFocusd</button>
+            <button id="leechBlock" class="blockerButton">LeechBlock NG</button>
+            <button id="distractMeNot" class="blockerButton">Distract Me Not</button>
+        </div>
+        
     </div>
 
     <div id="chooseOptions" class="hide">
@@ -26,7 +32,8 @@
 
             <input type="checkbox" id="social">
             <label for="social">Social websites</label><br>
-
+            
+            <br><br>
             <input type="submit" value="Next">
         </form>
     </div>
@@ -40,7 +47,19 @@
     <div id="finish" class="hide">
         <h1>Step 3: Done!</h1>
         <p>Your custom-tailored distracting-websites-list has been created!</p>
-        <button id="copyList">Click here to copy the list to the clipboard</button>
+
+        <div id="noDownload" class="hide">
+            <button id="copyList">Click here to copy the list to the clipboard</button>
+        </div>
+        
+        <br>
+
+        <div id="download" class="hide">
+            <button id="downloadList">Click here to download the list</button>
+        </div>
+
+        <div id="instructions">
+        </div>
     </div>
 
     <script src="script.js"></script>
